@@ -1,6 +1,6 @@
 module defstruct
     implicit none
-    integer,parameter :: nx=150
+    integer,parameter :: nx=50
     integer,parameter :: nz=100
     integer,parameter :: cox=4
     integer,parameter :: coz=4

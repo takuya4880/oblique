@@ -33,8 +33,8 @@ program main
     box%con%imx = this_image(box,1)
     box%con%imz = this_image(box,2)
     box%con%marg = marg
-    box%con%wid = 150.
-    box%con%hig = 60.
+    box%con%wid = 80.
+    box%con%hig = 115.
     box%con%dx = box%con%wid/dble(nnx-1)
     box%con%dz = box%con%hig/dble(nnz-1)
     box%con%a = 0.4
