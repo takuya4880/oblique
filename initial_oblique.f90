@@ -62,7 +62,8 @@ subroutine initial(box, uboundary)
     beta1i = 0.25/betafs*(tanh((zz-zfsl)/w) + 1.) * (-tanh((zz-zfsu)/w) + 1.)
     !beta2i = 0.5/betacor*(tanh((zz-zmgc)/w) + 1.)
     !beta = 1./(beta1i+beta2i)
-    beta = 1./beta1i
+    !beta = 1./beta1i
+    beta = 1.e30
     do i=origin+1,iiz
         den(i) = den(i-1) * ((1.+1./beta(i-1))*temp(i-1) + 0.5*box%con%gam*box%con%dz*box%con%gz)&
                           / ((1.+1./beta(i))*temp(i) - 0.5*box%con%gam*box%con%dz*box%con%gz)
