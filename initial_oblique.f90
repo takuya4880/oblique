@@ -106,6 +106,9 @@ subroutine initial(box, uboundary)
             end if
         end do
     end do
+    box%rovx = 0.
+    box%rovy = 0.
+    box%rovz = 0.
 
     box%bx = spread(b(head:tail)*cos(phi(head:tail)),1,ix)
     box%by = 0.
