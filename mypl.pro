@@ -1,7 +1,7 @@
 set_plot,'z'
 
-xsize=750
-ysize=300
+xsize=300
+ysize=400
 timeoffset=0
 device,set_resolution=[xsize,ysize]
 device,set_character_size=[6,9]
