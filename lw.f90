@@ -198,7 +198,7 @@ subroutine flux(box, fx, fz)
 
             eta = sqrt((jx**2+jy**2+jz**2)*16.*atan(1.0))*roi  !calculate vd
             
-            if (eta<vc .or. box%z(j) < 10.) then
+            if (eta<vc .or. box%z(j) < 5.) then
                 eta = 0.
             else 
                 eta = alp*(eta/vc-1.)**2
@@ -206,6 +206,7 @@ subroutine flux(box, fx, fz)
                     eta = etamax
                 end if
             end if
+
             ex = eta*jx + (-vy*bz+vz*by)
             ey = eta*jy + (-vz*bx+vx*bz)
             ez = eta*jz + (-vx*by+vy*bx)
