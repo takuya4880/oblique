@@ -39,7 +39,7 @@ subroutine initial(box, uboundary)
     a = 2.
     ad = a*(box%con%gam-1.)/box%con%gam
 
-    origin = int(5./box%con%hig*nnz)+1+m
+    origin = int(10./box%con%hig*nnz)+1+m
     
     forall(i=1:ix) box%x(i)=box%con%dx*(nx*(box%con%imx-1)+i-m)
     forall(i=1:iz) box%z(i)=box%con%dz*(nz*(box%con%imz-1)+i-origin)
@@ -62,8 +62,8 @@ subroutine initial(box, uboundary)
     beta1i = 0.25/betafs*(tanh((zz-zfsl)/w) + 1.) * (-tanh((zz-zfsu)/w) + 1.)
     !beta2i = 0.5/betacor*(tanh((zz-zmgc)/w) + 1.)
     !beta = 1./(beta1i+beta2i)
-    !beta = 1./beta1i
-    beta = 1.e30
+    beta = 1./beta1i
+    !beta = 1.e30
     do i=origin+1,iiz
         den(i) = den(i-1) * ((1.+1./beta(i-1))*temp(i-1) + 0.5*box%con%gam*box%con%dz*box%con%gz)&
                           / ((1.+1./beta(i))*temp(i) - 0.5*box%con%gam*box%con%dz*box%con%gz)
@@ -106,9 +106,6 @@ subroutine initial(box, uboundary)
             end if
         end do
     end do
-    box%rovx = 0.
-    box%rovy = 0.
-    box%rovz = 0.
 
     box%bx = spread(b(head:tail)*cos(phi(head:tail)),1,ix)
     box%by = 0.

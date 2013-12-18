@@ -15,7 +15,7 @@ device,set_character_size=[6,9]
 ct = 39
 loadct, ct
 
-mout = 1
+mout = 0
 gam = 5./3.
 
 mx=7
