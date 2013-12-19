@@ -110,10 +110,14 @@ subroutine initial(box, uboundary)
     box%by = 0.
     forall(i=1:iz) box%bz(:,i) = b(i+offset)*sin(phi(i+offset))
     vanish = origin/5*3
-    box%bx = box%bx + bcor*cos(theta)
-    box%bz = box%bz + bcor*sin(theta)
-    !box%bx(:,vanish:iz) = box%bx(:,vanish:iz) + bcor*cos(theta)
-    !box%bz(:,vanish:iz) = box%bz(:,vanish:iz) + bcor*sin(theta)
+    if (box%con%imz==1) then
+        box%bx(:,vanish:iz) = box%bx(:,vanish:iz) + bcor*cos(theta)
+        box%bz(:,vanish:iz) = box%bz(:,vanish:iz) + bcor*sin(theta)
+        box%bx(:,1:vanish-1) = box%bx(:,1:vanish-1) -bcor
+    else
+        box%bx = box%bx + bcor*cos(theta)
+        box%bz = box%bz + bcor*sin(theta)
+    endif
     forall(i=1:iz) box%pr(:,i) = pre(i+offset) 
     box%e = 0.5*(box%rovx**2 + box%rovy**2 + box%rovz**2)/box%ro &
             + box%pr/(box%con%gam-1.) &

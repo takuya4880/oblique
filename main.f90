@@ -42,9 +42,9 @@ program main
     box%con%gam = 5./3.
 
     t = 0.
-    tint = 1.
+    tint = 0.01
     tnxt = tint
-    tend = 80.
+    tend = 0.3
 
     call initial(box, uboundary)
     sync all
