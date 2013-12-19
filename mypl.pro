@@ -23,6 +23,7 @@ namear=strarr(mx)
 dminar=fltarr(mx)
 dmaxar=fltarr(mx)
 dlogar=intarr(mx)
+mar=margin-1
 
 m=0 & namear[m]='log(ro)' & dminar[m]=-9.00d0 & dmaxar[m]=1.00d0 & dlogar[m]=1
 m=1 & namear[m]='vx'      & dminar[m]=-1.00d-1 & dmaxar[m]=1.00d-1
@@ -61,7 +62,7 @@ case m of
     6: contour, (gam*pr[*,*,time]/ro[*,*,time]),x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/fill,levels=levels1
 endcase
 
-contour, az[*,*,time],x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/noerase,levels=levels2
+contour, az[mar:-mar-1,mar:-mar-1,time],x[mar:-mar-1],y[mar:-mar-1],xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/noerase,levels=levels2
 xyouts,0.45,0.93,namear[m],/normal,charsize=2
 xyouts,0.8,0.93,'t='+time_st,/normal,charsize=2
 color_bar, cbrange,0.85,0.1,0.88,0.9, ct=ct,charsize=1,/vertical

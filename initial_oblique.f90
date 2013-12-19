@@ -39,7 +39,7 @@ subroutine initial(box, uboundary)
     a = 2.
     ad = a*(box%con%gam-1.)/box%con%gam
 
-    origin = int(10./box%con%hig*nnz)+1+m
+    origin = int(5./box%con%hig*nnz)+1+m
     
     forall(i=1:ix) box%x(i)=box%con%dx*(nx*(box%con%imx-1)+i-m)
     forall(i=1:iz) box%z(i)=box%con%dz*(nz*(box%con%imz-1)+i-origin)
