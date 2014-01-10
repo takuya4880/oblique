@@ -2,8 +2,8 @@ module defstruct
     implicit none
     integer,parameter :: nx=50
     integer,parameter :: nz=100
-    integer,parameter :: cox=4
-    integer,parameter :: coz=4
+    integer,parameter :: cox=8
+    integer,parameter :: coz=8
     integer,parameter :: nnx=nx*cox
     integer,parameter :: nnz=nz*coz
     integer,parameter :: marg=5

@@ -13,8 +13,8 @@ subroutine outp(box,t)
     write(box%op%mf_pr) box%pr
     write(box%op%mf_vx) box%rovx/box%ro
     write(box%op%mf_vy) box%rovz/box%ro
-    write(box%op%mf_bx) box%bx
-    write(box%op%mf_by) box%bz
+    write(box%op%mf_bx) box%bx*sqrt(16.*atan(1.))
+    write(box%op%mf_by) box%bz*sqrt(16.*atan(1.))
     write(box%op%mf_az) box%bpot
 
 end subroutine 

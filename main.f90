@@ -25,7 +25,7 @@ program main
     call date_and_time(tmp,tmp,tmp,start)
 
     mcont = 0
-    timelimit = 210 !: 210:3.5hours
+    timelimit = 13 !: 210:3.5hours
     box%con%nx = nx
     box%con%nz = nz
     box%con%ix = ix
@@ -44,7 +44,7 @@ program main
     t = 0.
     tint = 1.
     tnxt = tint
-    tend = 80
+    tend = 120
 
     call initial(box, uboundary)
     sync all

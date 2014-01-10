@@ -56,4 +56,11 @@ by=reform(by)
 az=reform(az)
 te=pr/ro*gm
 
+
+dx=x[1]-x[0] 
+dy=y[1]-y[0]
+j=dblarr(ix,jx,n_elements(t))
+j[1:ix-2,1:jx-2,*] = abs((bx[1:ix-2,2:jx-1,*]-bx[1:ix-2,0:jx-3,*])/(2.*dy) - (by[2:ix-1,1:jx-2,*]-by[0:ix-3,1:jx-2,*])/(2.*dx))
+
+
 end
