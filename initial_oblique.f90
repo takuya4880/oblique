@@ -35,7 +35,7 @@ subroutine initial(box, uboundary)
     zinv = 5.
     betafs=4.
     betacor=0.2
-    bcor = 0.07
+    bcor = 0.07 / sqrt(atan(1.)*16.)
     a = 2.
     ad = a*(box%con%gam-1.)/box%con%gam
 
@@ -101,7 +101,7 @@ subroutine initial(box, uboundary)
             x = box%x(i)
             z = box%z(j)
             if (z>zfsl .and. z<zfsu .and. x>0.5*wid-0.25*lp .and. x<0.5*wid+0.25*lp) then
-                !box%rovz(i,j) = box%ro(i,j)*amp*cos(8.*atan(1.d0)*(x-0.5*wid)/lp)
+                box%rovz(i,j) = box%ro(i,j)*amp*cos(8.*atan(1.d0)*(x-0.5*wid)/lp)
             end if
         end do
     end do
