@@ -11,6 +11,8 @@ subroutine boundary(box, uboundary)
     imx = box%con%imx
     imz = box%con%imz
 
+    call periodicbc(box,imx,imz)    
+
     if (imz==coz) then
         call upgradbc(box%ro, 1, uboundary)
         call upgradbc(box%rovx, 2, uboundary)
@@ -33,9 +35,11 @@ subroutine boundary(box, uboundary)
         call lowmrbc(box%bz)
         call lowmrbc(box%e)
         call lowmrbc(box%pr)
+        box%e(:,1:marg) = box%e(:,1:marg) - 0.5*(box%rovx(:,1:marg)**2 + box%rovy(:,1:marg)**2)/box%ro(:,1:marg)
+        box%rovx(:,1:marg)=0.
+        box%rovy(:,1:marg)=0.
     end if
 
-    call periodicbc(box,imx,imz)    
 
     sync all
     if(imz==1) forall(i=1:marg) box%bpot(:,i)=box%bpot(:,marg+1)

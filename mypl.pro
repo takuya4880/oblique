@@ -1,5 +1,6 @@
 set_plot,'z'
 
+mout = 7
 xsize=400
 ysize=400
 timeoffset=0
@@ -15,14 +16,14 @@ device,set_character_size=[6,9]
 ct = 39
 loadct, ct
 
-mout = 1
 gam = 5./3.
 
-mx=7
+mx=8
 namear=strarr(mx)
 dminar=fltarr(mx)
 dmaxar=fltarr(mx)
 dlogar=intarr(mx)
+mar=margin-1
 
 m=0 & namear[m]='log(ro)' & dminar[m]=-9.00d0 & dmaxar[m]=1.00d0 & dlogar[m]=1
 m=1 & namear[m]='vx'      & dminar[m]=-1.00d-1 & dmaxar[m]=1.00d-1
@@ -31,6 +32,7 @@ m=3 & namear[m]='log(pr)' & dminar[m]=-7.00d0 & dmaxar[m]=1.00d0 & dlogar[m]=1
 m=4 & namear[m]='bx'      & dminar[m]=-4.40d0 & dmaxar[m]=4.40d0
 m=5 & namear[m]='by'      & dminar[m]=-1.80d0 & dmaxar[m]=1.80d0
 m=6 & namear[m]='T'       & dminar[m]=-2.00d2 & dmaxar[m]=5.00d2
+m=7 & namear[m]='J'       & dminar[m]=-2.50d-2 & dmaxar[m]=5.00d-2
 
 m=mout
 nlevels=128
@@ -59,9 +61,10 @@ case m of
     4: contour, bx[*,*,time],x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/fill,levels=levels1
     5: contour, by[*,*,time],x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/fill,levels=levels1
     6: contour, (gam*pr[*,*,time]/ro[*,*,time]),x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/fill,levels=levels1
+    7: contour, j[*,*,time],x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/fill,levels=levels1
 endcase
 
-contour, az[*,*,time],x,y,xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/noerase,levels=levels2
+contour, az[mar:-mar-1,mar:-mar-1,time],x[mar:-mar-1],y[mar:-mar-1],xrange=xrange,yrange=yrange,xstyle=1,ystyle=1,/noerase,levels=levels2
 xyouts,0.45,0.93,namear[m],/normal,charsize=2
 xyouts,0.8,0.93,'t='+time_st,/normal,charsize=2
 color_bar, cbrange,0.85,0.1,0.88,0.9, ct=ct,charsize=1,/vertical
