@@ -27,6 +27,10 @@ subroutine step(box)
     call source(box, s)
     call lw1(box, h, d, fx, fz, s)
     call pressure(h)
+
+    box%e(:,1:marg) = box%e(:,1:marg) - 0.5*(box%rovx(:,1:marg)**2 + box%rovy(:,1:marg)**2)/box%ro(:,1:marg)
+    box%rovx(:,1:marg)=0.
+    box%rovy(:,1:marg)=0.
     
     call flux(h, fx, fz)
     call source(h, s)
