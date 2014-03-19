@@ -27,17 +27,14 @@ subroutine boundary(box, uboundary)
 
     if (imz==1) then
         call lowmrbc(box%ro)
-        call lowmrbc(box%rovx)
-        call lowmrbc(box%rovy)
-        call lowmrbc2(box%rovz)
+        call lowmrbc2(box%rovx)
+        call lowmrbc2(box%rovy)
+        call lowmrbc(box%rovz)
         call lowmrbc2(box%bx)
         call lowmrbc2(box%by)
         call lowmrbc(box%bz)
         call lowmrbc(box%e)
         call lowmrbc(box%pr)
-        box%e(:,1:marg) = box%e(:,1:marg) - 0.5*(box%rovx(:,1:marg)**2 + box%rovy(:,1:marg)**2)/box%ro(:,1:marg)
-        box%rovx(:,1:marg)=0.
-        box%rovy(:,1:marg)=0.
     end if
 
 

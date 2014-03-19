@@ -25,7 +25,7 @@ program main
     call date_and_time(tmp,tmp,tmp,start)
 
     mcont = 0
-    timelimit = 13 !: 210:3.5hours
+    timelimit = 10 !: 210:3.5hours
     box%con%nx = nx
     box%con%nz = nz
     box%con%ix = ix
